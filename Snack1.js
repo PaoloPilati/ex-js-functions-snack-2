@@ -34,8 +34,22 @@ console.log(testResultArrow)
 
 
 //FUNZIONE CON CALLBACK E CLOSURE
-const countViews = function (currentViews, viewsToAdd, sum) {
+const countViews = (sum) => {
+    //private state
+    let currentViews = 0;
 
-    
-}
+    //closure
+    const incrementViews = () => {
+        currentViews = sum(currentViews, 1);
+        return currentViews;
+    };
 
+    return incrementViews;
+};
+
+//riferimento esterno
+const addView = countViews(sum);
+
+console.log(addView());
+console.log(addView());
+console.log(addView());
