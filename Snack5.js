@@ -6,13 +6,13 @@
 
 printEverySecond = (message) => console.log(message);
 
-const intervalFunction = setInterval(() => {
+const intervalId = setInterval(() => {
     printEverySecond("Print me after a while!");}, 1000);
 
 printEverySecond("Print me now.");
 
 setTimeout(() => {
-    clearInterval(intervalFunction);
+    clearInterval(intervalId);
 }, 5000);
 
 setTimeout(() => {

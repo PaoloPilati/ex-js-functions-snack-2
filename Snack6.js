@@ -7,13 +7,20 @@ const createAutoCounter = (intervalTime) => {
     let counter = 0;
 
     return () => {
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             counter = counter + 1;
             console.log(counter);
         }, intervalTime);
+
+        return intervalId;
     };
 };
     
 const startCounter = createAutoCounter(1000);
 
-startCounter();
+const intervalId = startCounter();
+
+setTimeout(() => {
+    clearInterval(intervalId);
+    console.log("10 secondi passati!");
+}, 10000);
