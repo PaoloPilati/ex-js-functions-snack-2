@@ -6,8 +6,15 @@
 
 printEverySecond = (message) => console.log(message);
 
-setInterval(() => {
+const intervalFunction = setInterval(() => {
     printEverySecond("Print me after a while!");}, 1000);
 
 printEverySecond("Print me now.");
 
+setTimeout(() => {
+    clearInterval(intervalFunction);
+}, 5000);
+
+setTimeout(() => {
+    console.log("The job is done...");
+}, 6000);
