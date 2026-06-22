@@ -6,7 +6,7 @@ const countdown = (n) => {
     let counter = n;
 
     const intervalId = setInterval(() => {
-        if (counter > 0) {
+        if (counter >= 0) {
             console.log(counter);
             counter = counter - 1;
         } else {
