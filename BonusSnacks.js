@@ -61,4 +61,23 @@ operationSequence([
 //throttledLog(); //Ignorato, (chiamato troppo presto)
 //setTimeout(throttledLog, 2500); // "Eseguito!" (dopo 2.5 sec)
 
-function createThrottler(callback, limit)
+function createThrottler(callback, limit){
+    let lastExecution = 0;
+    return function (...args){
+
+        const time = Date.now();
+
+        if(time - lastExecution >= limit){
+            lastExecution = time;
+            callback(...args);
+        }else{
+            console.log("Cannot execute")
+        }
+    }
+}
+
+const throttledLog = createThrottler(() => console.log("Executed!"), 2500);
+
+throttledLog(); //"Eseguito!"
+throttledLog(); //Ignorato, (chiamato troppo presto)
+setTimeout(throttledLog, 2500); // "Eseguito!" (dopo 2.5 sec)
